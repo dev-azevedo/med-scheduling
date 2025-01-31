@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from src.routers.medical_specialties_routers import router as router_medical_specialties
-from src.infra.database import engine
-from src.models import medical_specialties_model
+from src.infra.create_tables import create_tables
 
-medical_specialties_model.Base.metadata.create_all(engine)
+create_tables()
+
 app = FastAPI()
 
 app.include_router(router_medical_specialties)
