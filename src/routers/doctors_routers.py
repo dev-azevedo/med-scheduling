@@ -18,7 +18,7 @@ def post(doctor: schemas.DoctorCreate, service: service.DoctorService = Depends(
         raise HTTPException(status_code=400, detail=str(e))
     
 @router.get("/", response_model=list[schemas.Doctor])
-def get(skip: int = 0, limit: int = 10, service: service.DoctorService = Depends(get_doctor_service)):
+def get(skip: int = 1, limit: int = 10, service: service.DoctorService = Depends(get_doctor_service)):
     try:
         return service.get(skip=skip, limit=limit)
     except Exception as e:

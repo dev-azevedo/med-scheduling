@@ -24,8 +24,8 @@ class DoctorService:
         self.db.refresh(db_doctor)
         return db_doctor
     
-    def get(self, skip: int = 0, limit: int = 100):
-        return self.query.filter_by(status=True).offset(skip).limit(limit).all()
+    def get(self, skip: int = 1, limit: int = 100):
+        return self.query.filter_by(status=True).offset(skip-1).limit(limit).all()
     
     def get_id(self, doctor_id: int):
         result = self.query.filter(
