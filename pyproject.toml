@@ -8,6 +8,7 @@ dependencies = [
     "fastapi[all]>=0.115.7",
     "pydantic>=2.10.6",
     "python-decouple>=3.8",
+    "scalar-fastapi>=1.0.3",
     "sqlalchemy>=2.0.37",
     "uvicorn>=0.34.0",
 ]

@@ -1,13 +1,12 @@
 
 from sqlalchemy.orm import Session
-from src.models import medical_specialties_model as model
+from src.models.medical_specialties_model import MedicalSpecialties
 from src.schemas import medical_specialties_schemas as schema
 
 class MedicalSpecialtyService:
     def __init__(self, db: Session):
         self.db = db
-        self.model = model.MedicalSpecialties
-        self.query = self.db.query(self.model)
+        self.query = self.db.query(MedicalSpecialties)
         
     def create(self, medical_specialty: schema.MedicalSpecialtiesCreate):
         db_medical_specialty_has_register = self.query.filter_by(name=medical_specialty.name).first()
@@ -15,7 +14,7 @@ class MedicalSpecialtyService:
         if db_medical_specialty_has_register:
             raise Exception("Medical Specialty already exists")
         
-        db_medical_specialty = self.model(**medical_specialty.model_dump())
+        db_medical_specialty = MedicalSpecialties(**medical_specialty.model_dump())
         self.db.add(db_medical_specialty)
         self.db.commit()
         self.db.refresh(db_medical_specialty)
@@ -26,8 +25,8 @@ class MedicalSpecialtyService:
     
     def get_id(self, medical_specialty_id: int):
         result = self.query.filter(
-            self.model.id ==medical_specialty_id, 
-            self.model.status == True
+            MedicalSpecialties.id ==medical_specialty_id, 
+            MedicalSpecialties.status == True
             ).first()
         
         if result is None:

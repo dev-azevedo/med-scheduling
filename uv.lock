@@ -314,6 +314,7 @@ dependencies = [
     { name = "fastapi", extra = ["all"] },
     { name = "pydantic" },
     { name = "python-decouple" },
+    { name = "scalar-fastapi" },
     { name = "sqlalchemy" },
     { name = "uvicorn" },
 ]
@@ -323,6 +324,7 @@ requires-dist = [
     { name = "fastapi", extras = ["all"], specifier = ">=0.115.7" },
     { name = "pydantic", specifier = ">=2.10.6" },
     { name = "python-decouple", specifier = ">=3.8" },
+    { name = "scalar-fastapi", specifier = ">=1.0.3" },
     { name = "sqlalchemy", specifier = ">=2.0.37" },
     { name = "uvicorn", specifier = ">=0.34.0" },
 ]
@@ -527,6 +529,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/5b/8a/71cfbf6bf6257ea785d1f030c22468f763eea1b3e5417620f2ba9abd6dca/rich_toolkit-0.13.2.tar.gz", hash = "sha256:fea92557530de7c28f121cbed572ad93d9e0ddc60c3ca643f1b831f2f56b95d3", size = 72288 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/7e/1b/1c2f43af46456050b27810a7a013af8a7e12bc545a0cdc00eb0df55eb769/rich_toolkit-0.13.2-py3-none-any.whl", hash = "sha256:f3f6c583e5283298a2f7dbd3c65aca18b7f818ad96174113ab5bec0b0e35ed61", size = 13566 },
+]
+
+[[package]]
+name = "scalar-fastapi"
+version = "1.0.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/2c/04/08ae9e86f24cd9b43bc5b2068fc5d1dcd3e7efa6db860290734d7d742512/scalar_fastapi-1.0.3.tar.gz", hash = "sha256:9e9cb8398e298cd435a0171eebe1675b8899eb21e47c238db0d48783143f0ffb", size = 4107 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/6d/9e/ca0ffc3fc4788c6e1367b96a70f2d6ee33f91d580664a8142ba7ee292ef2/scalar_fastapi-1.0.3-py3-none-any.whl", hash = "sha256:4a47a140795097ad034518ce0e32940f2c54f0f4bc60e4c3289ca30a7e6f954d", size = 4579 },
 ]
 
 [[package]]

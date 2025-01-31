@@ -1,15 +1,24 @@
 from sqlalchemy.orm import Session
-from src.models import doctors_model as model
+from sqlalchemy import or_
+from src.models.doctors_model import Doctors
 from src.schemas import doctor_schemas as schema
 
 class DoctorService:
     def __init__(self, db: Session):
         self.db = db
-        self.model = model.Doctors
-        self.query = self.db.query(self.model)
+        self.query = self.db.query(Doctors)
     
     def create(self, doctor: schema.DoctorCreate):
-        db_doctor = self.model(**doctor.model_dump())
+        doctor_has_register = self.query.filter(
+            or_(
+                Doctors.email==doctor.email,
+                Doctors.crm==doctor.crm,
+            )).first()
+        
+        if doctor_has_register:
+            raise Exception("Doctor already exists with this email or crm")
+        
+        db_doctor = Doctors(**doctor.model_dump())
         self.db.add(db_doctor)
         self.db.commit()
         self.db.refresh(db_doctor)
@@ -20,8 +29,8 @@ class DoctorService:
     
     def get_id(self, doctor_id: int):
         result = self.query.filter(
-            self.model.id ==doctor_id, 
-            self.model.status == True
+            Doctors.id ==doctor_id, 
+            Doctors.status == True
             ).first()
         
         if result is None:
