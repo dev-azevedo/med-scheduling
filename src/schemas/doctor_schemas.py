@@ -6,8 +6,6 @@ class DoctorBase(BaseModel):
     crm: str
     phone: str
     email: str
-    medical_specialties: list[int]
-    description: str
     
 class DoctorCreate(DoctorBase):
     pass
