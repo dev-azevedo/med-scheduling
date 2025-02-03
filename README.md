@@ -1,5 +1,25 @@
 ## **Documentação do Projeto de Agendamento de Consultas**
 
+
+## 🗃️ Database
+Estou usando alambic para gerenciar as migrações e o banco de dados.
+
+```bash
+# Iniciar o ambient
+uv run alembic upgrade head #uv para gerenciar
+
+ou
+
+alembic upgrade head
+```	
+
+# Criar nova migração
+```bash
+# Iniciar o ambient
+alembic revision --autogenerate -m "add new field to user"
+```	
+
+
 ## Descrição Geral
 
 Este projeto visa criar uma API de agendamento de consultas médicas utilizando **FastApi**. A API será usada para agendar, listar, editar e cancelar consultas, além de gerenciar médicos, pacientes e especialidades médicas.
